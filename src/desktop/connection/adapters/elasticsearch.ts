@@ -1,6 +1,6 @@
-import { Adapter } from "./adapter";
+import { Adapter } from './adapter';
 
-export class ElasticsearchAdapter extends Adapter{
+export class ElasticsearchAdapter extends Adapter {
 
 
 

@@ -1,17 +1,19 @@
 const remote = require('electron').remote;
 import { OnInit } from '@angular/core';
 
-export class DCWindow implements OnInit{
+export class DCWindow implements OnInit {
 
-    window: any;
+    public window: any;
 
-    constructor(){
+    constructor() {
         this.window = this.getWindow();
     }
 
-    ngOnInit(){}
+    public ngOnInit() {
+        //
+    }
 
-    getWindow(){
+    public getWindow() {
         return remote.getCurrentWindow();
     }
 

@@ -1,13 +1,15 @@
-import { Bus } from "./bus";
-import { Application } from "./application";
+import { Bus } from './bus';
+import { Application } from './application';
 
 /** Handler for crashes */
 
-process.on('uncaughtException', function (err) {
+process.on('uncaughtException', (err) => {
 
     // @TODO need implement
 
-    console.error((new Date).toUTCString() + ' uncaughtException:', err.message);
+    let date = new Date();
+
+    console.error(date.toUTCString() + ' uncaughtException:', err.message);
     console.error(err.stack);
 
     const dialog = require('electron').dialog;
@@ -23,10 +25,10 @@ process.on('uncaughtException', function (err) {
 
 });
 
-/** Initialize IPC bus **/
+// Initialize IPC bus
 
-new Bus();
+let bus = new Bus();
 
-/** Initialize Application */
+// Initialize Application
 
-new Application();
+let app = new Application();

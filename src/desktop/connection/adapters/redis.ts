@@ -1,6 +1,6 @@
-import { Adapter } from "./adapter";
+import { Adapter } from './adapter';
 
-export class RedisAdapter extends Adapter{
+export class RedisAdapter extends Adapter {
 
 
 

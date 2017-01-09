@@ -1,31 +1,32 @@
-import { Connections } from "../connection/connections";
-import { Connection } from "../connection/connection";
+import { Connections } from '../connection/connections';
+import { Connection } from '../connection/connection';
 const ipc = require('electron').ipcMain;
 
-export class Bus{
+export class Bus {
 
-    constructor(){
+    constructor() {
         this.init();
     }
 
-    init(){
+    public init() {
 
-        /** Loading Connections **/
+        /* Loading Connections **/
 
         ipc.on('connections-load', (event, arg) => {
 
             let connections;
 
-            switch(arg){
+            switch (arg) {
                 case 'recent': connections = new Connections().loadRecentConnections(); break;
                 case 'saved':  connections = new Connections().loadConnections(); break;
+                default: break;
             }
 
             event.sender.send('connections-loaded', JSON.stringify(connections));
 
         });
 
-        /** Create new connection **/
+        /* Create new connection **/
 
         ipc.on('connection-create', (event, arg) => {
 
@@ -39,9 +40,9 @@ export class Bus{
 
         });
 
-        /** @TODO Remove saved connection **/
+        /* @TODO Remove saved connection **/
 
-        /** Connect to database **/
+        /* Connect to database **/
 
         ipc.on('connection-connect', (event, connectionId) => {
 

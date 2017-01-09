@@ -1,8 +1,8 @@
-import { Component, NgZone } from '@angular/core';
-import { DCWindowSmall } from "../../helpers/window-small.dc";
-import { Router } from "@angular/router";
-import { Connection } from "../../helpers/connection";
-import {IPCService} from "../../services/ipc.service";
+import { Component, NgZone, OnInit } from '@angular/core';
+import { DCWindowSmall } from '../../helpers/window-small.dc';
+import { Router } from '@angular/router';
+import { Connection } from '../../helpers/connection';
+import { IPCService } from '../../services/ipc.service';
 
 const select2     = require('select2');
 const select2css  = require('select2/dist/css/select2.min.css');
@@ -24,10 +24,10 @@ console.log(logos.mysql);
     selector: 'dashboard',
     template: html
 })
-export class DashboardComponent extends DCWindowSmall{
+export class DashboardComponent extends DCWindowSmall implements OnInit {
 
     private newConnection: Connection = new Connection();
-    private connections: Array<any> = [];
+    private connections: any[] = [];
 
     constructor(
         private zone: NgZone,
@@ -48,7 +48,7 @@ export class DashboardComponent extends DCWindowSmall{
 
     }
 
-    connectTo = (connection, i) => {
+    public connectTo = (connection, i) => {
 
         this.zone.run(() => {
 
@@ -66,16 +66,16 @@ export class DashboardComponent extends DCWindowSmall{
 
         });
 
-    };
+    }
 
-    createNewConnection(){
+    public createNewConnection() {
 
-        if(
-            (typeof(this.newConnection.host) === 'undefined'||
-            this.newConnection.host.length == 0) ||
+        if (
+            (typeof(this.newConnection.host) === 'undefined' ||
+            this.newConnection.host.length === 0) ||
             (typeof(this.newConnection.user) === 'undefined' ||
-            this.newConnection.user.length == 0)
-        ){
+            this.newConnection.user.length === 0)
+        ) {
             alert('Host and User must be filled');
             return;
         }
@@ -89,25 +89,28 @@ export class DashboardComponent extends DCWindowSmall{
 
     }
 
-    openGithub(){
+    public openGithub() {
 
         let shell = require('electron').shell;
         shell.openExternal('https://github.com/HellsHamsters/datacat');
 
     }
 
-    ngOnInit(){
+    public ngOnInit() {
 
         super.ngOnInit();
 
         this.zone.run(() => {
 
-            $(document).ready(function() {
+            $(document).ready(() => {
 
                 function formatState (state) {
                     if (!state.id) { return state.text; }
                     return $(
-                        '<span class="select2-image-logotype"><span class="img"><img style="height: 20px; margin-right: 10px;" src="' + logos[state.element.value.toLowerCase()] + '" class="logo" /></span> ' + state.text + '</span>'
+                        '<span class="select2-image-logotype"><span class="img">' +
+                        '<img style="height: 20px; margin-right: 10px;" src="' +
+                        logos[state.element.value.toLowerCase()] + '" class="logo" /></span> ' +
+                        state.text + '</span>'
                     );
                 }
 

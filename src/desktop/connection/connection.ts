@@ -1,51 +1,49 @@
-import { Connections } from "./connections";
-import { Adapter } from "./adapters/adapter";
-import { MysqlAdapter } from "./adapters/mysql";
-import { PgsqlAdapter } from "./adapters/pgsql";
-import { RedisAdapter } from "./adapters/redis";
-import { ElasticsearchAdapter } from "./adapters/elasticsearch";
+import { Connections } from './connections';
+import { Adapter } from './adapters/adapter';
+import { MysqlAdapter } from './adapters/mysql';
+import { PgsqlAdapter } from './adapters/pgsql';
+import { RedisAdapter } from './adapters/redis';
+import { ElasticsearchAdapter } from './adapters/elasticsearch';
 
-export class Connection{
+export class Connection {
 
     private _adapter: Adapter;
 
     constructor(
 
-        private _id:string = null,
-        public type:string = null,
+        private _id: string = null,
+        public type: string = null,
+        public host: string = null,
+        public port: number = null,
+        public user: string = null,
+        public pass: string = null,
+        public name: string = null
 
-        public host:string = null,
-        public port:number = null,
-        public user:string = null,
-        public pass:string = null,
+    ) {
 
-        public name:string = null
+        // If we have _id, then load other data by this id
 
-    ){
-
-        /** If we have _id, then load other data by this id **/
-
-        if(typeof(this.getId()) !== 'undefined'){
+        if (typeof(this.getId()) !== 'undefined') {
             this.loadById(this.getId());
         }
 
-        /** I don't think so we really need something like that **/
+        // I don't think so we really need something like that
 
         this.port = (this.port) ? this.port : 3306;
         this.name = (this.name !== null) ? this.name : this.type + ' ' + this.user + '@' + this.host + ':' + this.port;
 
-        /** Choose adapter for further requests to database */
+        // Choose adapter for further requests to database
 
         this._adapter = this.chooseAdapter();
 
     }
 
     // @TODO need be static
-    loadById(id){
+    public loadById(id) {
 
-        for(let value of new Connections().loadConnections()){
+        for (let value of new Connections().loadConnections()) {
 
-            if(value._id == id){
+            if (value._id === id) {
                 this._id = id;
                 this.name = value.name;
                 this.type = value.db.type;
@@ -62,20 +60,20 @@ export class Connection{
 
     }
 
-    establish(): Promise<any> {
+    public establish(): Promise<any> {
 
         return new Promise<any>((resolve, reject) => {
 
             this._adapter.connect(this.getCredentials()).then((data) => {
 
-                /**
+                /*
                  * If connection was be successful, then we should
                  * move connection up in Recent list.
                  */
 
                 new Connections().upConnectionToRecentTop(this.getId());
 
-                /** Response to client **/
+                // Response to client
 
                 return resolve(data);
 
@@ -87,20 +85,21 @@ export class Connection{
 
     }
 
-    chooseAdapter(): Adapter {
-        switch(this.type){
+    public chooseAdapter(): Adapter {
+        switch (this.type) {
             case 'mysql': return new MysqlAdapter();
             case 'pgsql': return new PgsqlAdapter();
             case 'redis': return new RedisAdapter();
             case 'elasticsearch': return new ElasticsearchAdapter();
+            default: break;
         }
     }
 
-    getId(){
+    public getId() {
         return this._id;
     }
 
-    getCredentials(){
+    public getCredentials() {
         return {
             _id: this.getId(),
             name: this.name,
@@ -112,11 +111,11 @@ export class Connection{
         };
     }
 
-    toJSON(){
+    public toJSON() {
         return this.getCredentials();
     }
 
-    connect(): Promise<any>{
+    public connect(): Promise<any> {
 
         return new Promise<any>((resolve, reject) => {
 
@@ -136,15 +135,15 @@ export class Connection{
 
     }
 
-    create(): Promise<any>{
+    public create(): Promise<any> {
 
         return new Promise<any>((resolve, reject) => {
 
-            /** Generate new ID for connection **/
+            /* Generate new ID for connection **/
 
             this._id = new Date().getTime().toString();
 
-            /**
+            /*
              *
              * Check that connection available.
              * First of wall trying create connection.
@@ -156,11 +155,11 @@ export class Connection{
 
             this.establish().then(() => {
 
-                /** Connect successfully established, then ask about DBs */
+                /* Connect successfully established, then ask about DBs */
 
                 this._adapter.getDatabases().then((databases) => {
 
-                    /**
+                    /*
                      *
                      * Server send us databases list.
                      *
@@ -178,7 +177,7 @@ export class Connection{
 
                     list.push({
 
-                        /**
+                        /*
                          *
                          * We set it to 'connected',
                          * because UI may ask actual status of connection.
@@ -213,7 +212,7 @@ export class Connection{
 
                 }, (err) => {
 
-                    /** Final fault. It means that we can't save new connection **/
+                    /* Final fault. It means that we can't save new connection **/
 
                     return reject(err);
 
@@ -221,7 +220,7 @@ export class Connection{
 
             }, (err) => {
 
-                /** Not connected in any reasons */
+                /* Not connected in any reasons */
 
                 return resolve(err);
 

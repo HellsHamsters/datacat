@@ -1,15 +1,15 @@
-const fs = require('fs');
-const path = require('path');
+const fs    = require('fs');
+const path  = require('path');
 
-export class Connections{
+export class Connections {
 
-    file: string = path.join(__dirname, 'connections.json');
+    private file: string = path.join(__dirname, 'connections.json');
 
-    loadRecentConnections(){
+    public loadRecentConnections() {
 
         let connections = this.loadConnections();
 
-        if(connections.length > 6){
+        if (connections.length > 6) {
             connections.splice(0, 6);
         }
 
@@ -17,16 +17,16 @@ export class Connections{
 
     }
 
-    saveConnections(data){
+    public saveConnections(data) {
         fs.writeFileSync(this.file, JSON.stringify(data));
     }
 
-    loadConnections(){
+    public loadConnections() {
 
         fs.openSync(this.file, 'r+');
-        let connections = JSON.parse(fs.readFileSync(this.file));
+        let connections = JSON.parse(fs.readFileSync(this.file).toString());
 
-        if(Array.isArray(connections)){
+        if (Array.isArray(connections)) {
             connections.reverse();
         }
 
@@ -34,16 +34,16 @@ export class Connections{
 
     }
 
-    upConnectionToRecentTop(id){
+    public upConnectionToRecentTop(id) {
 
         let connections = this.loadConnections();
 
-        if(connections.length > 0){
+        if(connections.length > 0) {
 
             connections.reverse();
 
-            for(let index = 0; index < connections.length; index++){
-                if(connections[index]._id == id){
+            for (let index = 0; index < connections.length; index++) {
+                if (connections[index]._id === id) {
                     connections.push(connections[index]);
                     connections.splice(index, 1);
                     break;

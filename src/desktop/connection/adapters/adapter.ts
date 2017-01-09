@@ -1,26 +1,26 @@
-export abstract class Adapter{
+export abstract class Adapter {
 
-    connect(credentials): Promise<any> {
+    public connect(credentials): Promise<any> {
         return;
     }
 
-    getDatabases(): Promise<any> {
+    public getDatabases(): Promise<any> {
         return;
     }
 
-    getSchemas(): Promise<any> {
+    public getSchemas(): Promise<any> {
         return;
     }
 
-    getTables(): Promise<any> {
+    public getTables(): Promise<any> {
         return;
     }
 
-    getRows(): Promise<any> {
+    public getRows(): Promise<any> {
         return;
     }
 
-    getColumns(): Promise<any> {
+    public getColumns(): Promise<any> {
         return;
     }
 

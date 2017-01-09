@@ -7,6 +7,9 @@
   ],
   "rules": {
     // Custom
+    "no-shadowed-variable": false,
+    "no-var-requires": false,
+    "object-literal-shorthand": false,
     "trailing-comma": [
       false,
       {
@@ -50,7 +53,7 @@
     ],
     "max-line-length": [
       true,
-      100
+      120
     ],
     "no-string-literal": false,
     "no-use-before-declare": true,

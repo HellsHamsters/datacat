@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { DCWindowLarge } from "../../helpers/window-large.dc";
-import {Connection} from "../../helpers/connection";
+import { DCWindowLarge } from '../../helpers/window-large.dc';
+import { Connection } from '../../helpers/connection';
 
-const html = require('./view.html');
-const css = require('./styles.scss');
+const html  = require('./view.html');
+const css   = require('./styles.scss');
 
 @Component({
     template: html
 })
-export class WorkspaceComponent extends DCWindowLarge{
+export class WorkspaceComponent extends DCWindowLarge implements OnInit {
 
-    databases: Array<string>;
+    public databases: string[];
 
-    constructor(connection: Connection){
+    constructor(connection: Connection) {
 
         super();
 
@@ -20,12 +20,12 @@ export class WorkspaceComponent extends DCWindowLarge{
 
     }
 
-    ngOnInit(){
+    public ngOnInit() {
 
         super.ngOnInit();
 
-        if(this.databases.length == 0){
-
+        if (this.databases.length === 0) {
+            //
         }
 
     }

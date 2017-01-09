@@ -1,14 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ApplicationRef } from '@angular/core';
-import { RouterModule, PreloadAllModules} from '@angular/router';
+import { RouterModule, PreloadAllModules } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 import { ROUTES } from './app.routes';
 
 import { AppComponent } from './app.component';
-import { DashboardComponent } from "./components/dashboard";
-import { WorkspaceComponent } from "./components/workspace";
-import { Connection } from "./helpers/connection";
+import { DashboardComponent } from './components/dashboard';
+import { WorkspaceComponent } from './components/workspace';
+import { Connection } from './helpers/connection';
 
 @NgModule({
 
@@ -31,7 +31,7 @@ import { Connection } from "./helpers/connection";
     ]
 
 })
-export class AppModule{
+export class AppModule {
 
     constructor(
         public appRef: ApplicationRef

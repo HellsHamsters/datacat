@@ -3,12 +3,12 @@ import { app, BrowserWindow } from 'electron';
 const path  = require('path');
 const url   = require('url');
 
-export class Application{
+export class Application {
 
-    application: any = app;
-    window: any;
+    public application: any = app;
+    public window: any;
 
-    options = {
+    public options = {
         window: {
             width: 800,
             height: 600,
@@ -25,7 +25,7 @@ export class Application{
         })
     };
 
-    constructor(){
+    constructor() {
 
         this.application.on('ready', this.OnReady.bind(this));
         this.application.on('activate', this.OnActivate.bind(this));
@@ -33,7 +33,7 @@ export class Application{
 
     }
 
-    initializeWindow(){
+    public initializeWindow() {
 
         this.window = new BrowserWindow(this.options.window);
         this.window.loadURL(this.options.url);
@@ -54,45 +54,45 @@ export class Application{
 
         /** Handlers for errors and crashes */
 
-        this.window.webContents.on('crashed', function () {
+        this.window.webContents.on('crashed', () => {
             // @TODO need implement
         });
 
-        this.window.webContents.on('unresponsive', function () {
+        this.window.webContents.on('unresponsive', () => {
             // @TODO need implement
         });
 
     }
 
-    quit(){
+    public quit() {
         this.application.quit();
     }
 
-    isDarwin(){
+    public isDarwin() {
         return process.platform === 'darwin';
     }
 
-    isWindows(){
+    public isWindows() {
         return process.platform === 'win32';
     }
 
-    isLinux(){
+    public isLinux() {
         return process.platform === 'linux';
     }
 
-    OnWindowAllClosed(){
-        if(!this.isDarwin()){
+    public OnWindowAllClosed() {
+        if (!this.isDarwin()) {
             this.quit();
         }
     }
 
-    OnActivate(){
-        if(this.window === null){
+    public OnActivate() {
+        if (this.window === null) {
             this.initializeWindow();
         }
     }
 
-    OnReady(){
+    public OnReady() {
         this.initializeWindow();
     }
 

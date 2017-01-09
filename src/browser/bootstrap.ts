@@ -2,11 +2,11 @@ import './vendor';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
 import { AppModule } from './app';
-const css = require('./bootstrap.scss');
+import './bootstrap.scss';
 
 /** Initialize Application */
 
-if(process.env.NODE_ENV !== 'development'){
+if (process.env.NODE_ENV !== 'development') {
     enableProdMode();
 }
 

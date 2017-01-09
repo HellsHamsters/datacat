@@ -1,11 +1,11 @@
-import { Adapter } from "./adapter";
+import { Adapter } from './adapter';
 const mysql = require('mysql');
 
-export class MysqlAdapter extends Adapter{
+export class MysqlAdapter extends Adapter {
 
     private _descriptor;
 
-    connect(credentials){
+    public connect(credentials) {
 
         return new Promise<any>((resolve, reject) => {
 
@@ -34,7 +34,7 @@ export class MysqlAdapter extends Adapter{
 
     }
 
-    getDatabases(){
+    public getDatabases() {
 
         return new Promise<any>((resolve, reject) => {
 

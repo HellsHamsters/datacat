@@ -1,6 +1,6 @@
-import { Adapter } from "./adapter";
+import { Adapter } from './adapter';
 
-export class PgsqlAdapter extends Adapter{
+export class PgsqlAdapter extends Adapter {
 
 
 
