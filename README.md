@@ -1,6 +1,11 @@
 
 ## What is DataCat?
 
+DataCat is database manager for OS X, Linux and Windows which supports 
+MySQL, PostgreSQL, Redis, MongoDB and ElasticSearch.
+
+![preview-startpage](https://cloud.githubusercontent.com/assets/610172/21784372/427b384c-d6cc-11e6-9abd-56390e5d7b3e.png)
+
 ## Downloads / Install
 
 Actually, in most cases you need using the free installer for [OS X](), [Linux]() or [Window]().
