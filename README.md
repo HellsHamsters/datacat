@@ -9,11 +9,11 @@ MySQL, PostgreSQL, Redis, MongoDB and ElasticSearch.
 ## Downloads / Install
 
 Actually, in most cases you need using the free installer for [OS X](), [Linux]() or [Window]().
-However if you want set-up development environment and compile DataCat from sources, than read [Dev Environment Setup]().
+However if you want set-up development environment and compile DataCat from sources, than read [Dev Environment Setup](https://github.com/HellsHamsters/datacat/wiki/Dev-Environment-Setup).
 
 ## Contributing
 
-Contributions welcome! See the our [Contributor Guide]() on GitHub.
+Contributions welcome! See the our [Contributor Guide](https://github.com/HellsHamsters/datacat/wiki/Contributor-Guide) on GitHub.
 
 ## Contacts us
 
@@ -27,6 +27,6 @@ your dreams — we'll try help release a few awesome updates :)
 
 ## License
 
-See LICENSE or [GNU GENERAL PUBLIC LICENSE Version 3](http://www.gnu.org/licenses/gpl-3.0.txt)
+See [LICENSE](LICENSE) or [GNU GENERAL PUBLIC LICENSE Version 3](http://www.gnu.org/licenses/gpl-3.0.txt)
 
 Copyright © 2017 Anton Piskunov
