@@ -5,12 +5,13 @@
   "main": "build/desktop.bundle.js",
   "scripts": {
     "test": "karma start karma.conf.js --single-run",
-    "app": "electron .",
-    "build:dev": "webpack --watch --watch-poll --progress --colors",
-    "build:dev:debug": "webpack --profile --display-error-details --watch --watch-poll --progress --colors",
-    "build:dev:desktop": "BUILD_OPTION=ONLY_DESKTOP npm run build:dev",
-    "build:dev:browser": "BUILD_OPTION=ONLY_BROWSER npm run build:dev",
-    "lint": "tslint ./src/**/*.ts -t verbose"
+    "app": "cross-env NODE_ENV=development electron .",
+    "build:dev": "concurrently \"npm run build:dev:desktop\" \"npm run build:dev:browser\" ",
+    "build:dev:run": "cross-env NODE_ENV=development webpack --profile --progress --colors --watch --watch-poll",
+    "build:dev:desktop": "cross-env BUILD_TARGET=DESKTOP npm run build:dev:run",
+    "build:dev:browser": "cross-env BUILD_TARGET=BROWSER npm run build:dev:run",
+    "lint": "tslint ./src/**/*.ts -t verbose",
+    "clean": ""
   },
   "repository": {
     "type": "git",
