@@ -1,0 +1,87 @@
+@import "./assets/font-awesome/css/font-awesome.min.css";
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: url('./assets/opensans/OpenSans-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./assets/opensans/OpenSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./assets/opensans/OpenSans-Bold.ttf') format('truetype');
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  color: #333;
+  width: 100%;
+  height: 100%;
+  background: #F6F6F6;
+  padding: 0;
+  margin: 0;
+  -webkit-app-region: drag;
+  font-family: 'Open Sans', sans-serif;
+}
+
+a, label, input, select, h1, h2 {
+  color: #333;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+/** Buttons **/
+
+.btn {
+  outline: none;
+  cursor: pointer;
+  background: #4D89FB;
+  border-radius: 5px;
+  color: #fff;
+  padding: 5px 10px 7px 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 12px;
+  width: 100px;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
+  -webkit-box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1), inset 0 -2px 0 0 rgba(0, 0, 0, 0.2);
+  -webkit-transition: all linear .2s;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4D89FB), color-stop(100%, #8F0CE8));
+}
+
+.btn:hover, .btn:focus {
+  -webkit-box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1), inset 0 -2px 0 0 rgba(0, 0, 0, 0.3), inset 0 12px 20px 2px #3089d8;
+}
+
+.btn:active {
+  -webkit-box-shadow: inset 0 2px 0 0 rgba(0, 0, 0, 0.2), inset 0 12px 20px 6px rgba(0, 0, 0, 0.2), inset 0 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.btn-white {
+  color: #4D89FB;
+  text-shadow: none;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, #F5F2FB));
+}
+
+.btn-white:hover, .btn-white:focus {
+  -webkit-box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1), inset 0 -2px 0 0 rgba(0, 0, 0, 0.3), inset 0 -6px 20px 2px #ccc;
+}
+
+.btn-white:active {
+  -webkit-box-shadow: inset 0 2px 0 0 rgba(0, 0, 0, 0.2), inset 0 12px 20px 6px rgba(0, 0, 0, 0.2), inset 0 0 2px 2px rgba(0, 0, 0, 0.3);
+}

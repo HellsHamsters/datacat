@@ -1,0 +1,60 @@
+<div class="dc-dashboard">
+
+    <div class="connections-recent">
+
+        <h1>Recent connections</h1>
+
+        <ul class="connections-list">
+            <li *ngFor="let connection of connections; let i = index" class="{{connection.db.type}}" [ngClass]="{'status-wait': (connection.status=='wait')}">
+                {{connection.name}}
+                <a class="btn btn-white" href="javascript:void(0)" (click)="connectTo(connection, i)">
+                    <i *ngIf="connection.status != 'wait'" class="fa fa-plug"></i>
+                    <i *ngIf="connection.status == 'wait'" class="fa fa-circle-o-notch fa-spin"></i>
+                </a>
+            </li>
+        </ul>
+
+        <div class="copyright">
+            2017 <i class="fa fa-copyright"></i>
+            Anton Piskunov & HellsHamsters<br>
+            <a href="javascript:void(0)" (click)="openGithub()">github.com</a>
+        </div>
+
+    </div>
+
+    <div class="connection-new">
+
+        <h1>New connection</h1>
+
+        <div class="creation-form">
+
+            <select class="type" [(ngModel)]="newConnection.type">
+                <option value="mysql">MySQL</option>
+                <option value="pgsql">PostgreSQL</option>
+                <option value="redis">Redis</option>
+                <!--<option value="mongodb">MongoDB</option>-->
+                <option value="elasticsearch">ElasticSearch</option>
+            </select>
+
+            <label for="name">name</label>
+            <input id="name" type="text" placeholder="will auto generated if empty" [(ngModel)]="newConnection.name">
+
+            <label for="host">host</label>
+            <input id="host" type="text" placeholder="localhost" [(ngModel)]="newConnection.host">
+
+            <label for="port">port</label>
+            <input id="port" type="text" placeholder="3306" [(ngModel)]="newConnection.port">
+
+            <label for="user">user</label>
+            <input id="user" type="text" placeholder="root" [(ngModel)]="newConnection.user">
+
+            <label for="password">password</label>
+            <input id="password" type="password" placeholder="pass" [(ngModel)]="newConnection.pass">
+
+        </div>
+
+        <a class="btn create-connection" (click)="createNewConnection()">Connect</a>
+
+    </div>
+
+</div>
