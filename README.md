@@ -2,6 +2,7 @@
 ## What is DataCat?
 
 [![Build Status](https://travis-ci.org/HellsHamsters/datacat.svg?branch=master)](https://travis-ci.org/HellsHamsters/datacat)
+[![Coverage Status](https://coveralls.io/repos/github/HellsHamsters/datacat/badge.svg?branch=master)](https://coveralls.io/github/HellsHamsters/datacat?branch=master)
 
 DataCat is a database manager for OS X, Linux and Windows which supports 
 MySQL, PostgreSQL, Redis, MongoDB and ElasticSearch.
