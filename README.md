@@ -1,15 +1,17 @@
 
 ## What is DataCat?
 
-DataCat is database manager for OS X, Linux and Windows which supports 
+DataCat is a database manager for OS X, Linux and Windows which supports 
 MySQL, PostgreSQL, Redis, MongoDB and ElasticSearch.
+
+Just click on screenshots and feel awesome! :heart_eyes_cat:
 
 ![preview-startpage](https://cloud.githubusercontent.com/assets/610172/21784372/427b384c-d6cc-11e6-9abd-56390e5d7b3e.png)
 
 ## Downloads / Install
 
 Actually, in most cases you need using the free installer for [OS X](), [Linux]() or [Window]().
-However if you want set-up development environment and compile DataCat from sources, than read [Dev Environment Setup](https://github.com/HellsHamsters/datacat/wiki/Dev-Environment-Setup).
+However if you want set-up development environment and compile DataCat from sources, then read [Dev Environment Setup](https://github.com/HellsHamsters/datacat/wiki/Dev-Environment-Setup).
 
 ## Contributing
 
