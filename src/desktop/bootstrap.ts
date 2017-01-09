@@ -1,10 +1,5 @@
 import { Bus } from "./bus";
 import { Application } from "./application";
-// import { Raven } from "ravenjs";
-
-/** Setup Raven **/
-
-// Raven.config('').install();
 
 /** Handler for crashes */
 
@@ -14,6 +9,15 @@ process.on('uncaughtException', function (err) {
 
     console.error((new Date).toUTCString() + ' uncaughtException:', err.message);
     console.error(err.stack);
+
+    const dialog = require('electron').dialog;
+
+    dialog.showMessageBox({
+        type: 'error',
+        message: 'A JavaScript error occurred in the main process',
+        detail: err.stack,
+        buttons: ['OK'],
+    });
 
     process.exit(1);
 

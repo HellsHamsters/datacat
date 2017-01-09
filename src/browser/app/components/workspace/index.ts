@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DCWindowLarge } from "../../helpers/window-large.dc";
-import { DCCurrentConnection } from "../../helpers/currentConnection.dc";
+import {Connection} from "../../helpers/connection";
 
-let html = require('./view.html');
-let css = require('./styles.scss');
+const html = require('./view.html');
+const css = require('./styles.scss');
 
 @Component({
     template: html
@@ -12,11 +12,11 @@ export class WorkspaceComponent extends DCWindowLarge{
 
     databases: Array<string>;
 
-    constructor(currentConnection: DCCurrentConnection){
+    constructor(connection: Connection){
 
         super();
 
-        this.databases = currentConnection.databases;
+        this.databases = connection.databases;
 
     }
 

@@ -32,7 +32,7 @@ export class Connection{
         /** I don't think so we really need something like that **/
 
         this.port = (this.port) ? this.port : 3306;
-        this.name = (this.name != '') ? this.name : this.type + ' ' + this.user + '@' + this.host + ':' + this.port;
+        this.name = (this.name !== null) ? this.name : this.type + ' ' + this.user + '@' + this.host + ':' + this.port;
 
         /** Choose adapter for further requests to database */
 
@@ -40,6 +40,7 @@ export class Connection{
 
     }
 
+    // @TODO need be static
     loadById(id){
 
         for(let value of new Connections().loadConnections()){
@@ -101,6 +102,8 @@ export class Connection{
 
     getCredentials(){
         return {
+            _id: this.getId(),
+            name: this.name,
             type: this.type,
             host: this.host,
             port: this.port,
@@ -136,6 +139,10 @@ export class Connection{
     create(): Promise<any>{
 
         return new Promise<any>((resolve, reject) => {
+
+            /** Generate new ID for connection **/
+
+            this._id = new Date().getTime().toString();
 
             /**
              *
@@ -178,7 +185,7 @@ export class Connection{
                          *
                          */
 
-                        _id: new Date().getTime(),
+                        _id: this.getId(),
 
                         status: 'connected',
 
@@ -202,7 +209,7 @@ export class Connection{
 
                     connections.saveConnections(list);
 
-                    return resolve(databases);
+                    return resolve(this.getCredentials());
 
                 }, (err) => {
 

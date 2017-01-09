@@ -6,7 +6,15 @@ export class Connections{
     file: string = path.join(__dirname, 'connections.json');
 
     loadRecentConnections(){
-        return this.loadConnections().splice(0, 6);
+
+        let connections = this.loadConnections();
+
+        if(connections.length > 6){
+            connections.splice(0, 6);
+        }
+
+        return connections;
+
     }
 
     saveConnections(data){
@@ -28,17 +36,23 @@ export class Connections{
 
     upConnectionToRecentTop(id){
 
-        let connections = this.loadConnections().reverse();
+        let connections = this.loadConnections();
 
-        for(let index = 0; index < connections.length; index++){
-            if(connections[index]._id == id){
-                connections.push(connections[index]);
-                connections.splice(index, 1);
-                break;
+        if(connections.length > 0){
+
+            connections.reverse();
+
+            for(let index = 0; index < connections.length; index++){
+                if(connections[index]._id == id){
+                    connections.push(connections[index]);
+                    connections.splice(index, 1);
+                    break;
+                }
             }
-        }
 
-        this.saveConnections(connections);
+            this.saveConnections(connections);
+
+        }
 
     }
 

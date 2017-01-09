@@ -1,16 +1,16 @@
 import { Component, NgZone } from '@angular/core';
 import { DCWindowSmall } from "../../helpers/window-small.dc";
-import { DCIPC } from "../../helpers/ipc.dc";
 import { Router } from "@angular/router";
-import { DCCurrentConnection } from "../../helpers/currentConnection.dc";
+import { Connection } from "../../helpers/connection";
+import {IPCService} from "../../services/ipc.service";
 
-let select2     = require('select2');
-let select2css  = require('select2/dist/css/select2.min.css');
-let $           = require('jquery');
-let html        = require('./view.html');
-let css         = require('./styles.scss');
+const select2     = require('select2');
+const select2css  = require('select2/dist/css/select2.min.css');
+const $           = require('jquery');
+const html        = require('./view.html');
+const css         = require('./styles.scss');
 
-let logos = {
+const logos = {
     mysql: require('../../../assets/images/logotypes/mysql.png'),
     pgsql: require('../../../assets/images/logotypes/pgsql.png'),
     redis: require('../../../assets/images/logotypes/redis.png'),
@@ -26,25 +26,29 @@ console.log(logos.mysql);
 })
 export class DashboardComponent extends DCWindowSmall{
 
-    private newConnection = new DCCurrentConnection();
+    private newConnection: Connection = new Connection();
+    private connections: Array<any> = [];
 
-    private connections: Array<any>;
-
-    constructor(private zone: NgZone, private router: Router, private currentConnection: DCCurrentConnection) {
+    constructor(
+        private zone: NgZone,
+        private router: Router,
+        private connection: Connection
+    ) {
 
         super();
 
-        DCIPC.send('connections-load', 'recent');
-        DCIPC.on('connections-loaded', (event, arg) => {
-            console.log('Loaded connections: ', arg);
-            this.connections = arg;
-        });
+        new IPCService().load_recent_connections()
+            .then((connections) => {
+                this.connections = connections;
+                console.log('Loaded recent connections: ', this.connections);
+            })
+            .catch((reason) => {
+                // @TODO
+            });
 
     }
 
     connectTo = (connection, i) => {
-
-        console.log(connection);
 
         this.zone.run(() => {
 
@@ -52,7 +56,9 @@ export class DashboardComponent extends DCWindowSmall{
 
             this.connections[i].status = 'wait';
 
-            this.currentConnection.set(connection.db).connect(connection._id).then(() => {
+            this.connection.set({
+                _id: connection._id
+            }).connect().then(() => {
                 this.router.navigate(['/workspace']);
             }, () => {
                 this.connections[i].status = 'idle';
@@ -74,7 +80,7 @@ export class DashboardComponent extends DCWindowSmall{
             return;
         }
 
-        this.currentConnection.set(this.newConnection).create().then(() => {
+        this.connection.set(this.newConnection).create().then(() => {
             this.router.navigate(['/workspace']);
         }, (data) => {
             // @TODO

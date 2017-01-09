@@ -8,7 +8,7 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from "./components/dashboard";
 import { WorkspaceComponent } from "./components/workspace";
-import { DCCurrentConnection } from "./helpers/currentConnection.dc";
+import { Connection } from "./helpers/connection";
 
 @NgModule({
 
@@ -27,7 +27,7 @@ import { DCCurrentConnection } from "./helpers/currentConnection.dc";
     ],
 
     providers: [
-        DCCurrentConnection
+        Connection
     ]
 
 })

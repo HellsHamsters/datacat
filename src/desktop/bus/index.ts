@@ -21,7 +21,7 @@ export class Bus{
                 case 'saved':  connections = new Connections().loadConnections(); break;
             }
 
-            event.sender.send('connections-loaded', connections);
+            event.sender.send('connections-loaded', JSON.stringify(connections));
 
         });
 
@@ -29,7 +29,7 @@ export class Bus{
 
         ipc.on('connection-create', (event, arg) => {
 
-            let connection = new Connection(arg.type, arg.host, arg.port, arg.user, arg.pass, arg.name);
+            let connection = new Connection(null, arg.type, arg.host, arg.port, arg.user, arg.pass, arg.name);
 
             connection.create().then((data) => {
                 event.sender.send('connection-created', JSON.stringify(data));

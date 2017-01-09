@@ -4,15 +4,24 @@
 
         <h1>Recent connections</h1>
 
-        <ul class="connections-list">
-            <li *ngFor="let connection of connections; let i = index" class="{{connection.db.type}}" [ngClass]="{'status-wait': (connection.status=='wait')}">
-                {{connection.name}}
-                <a class="btn btn-white" href="javascript:void(0)" (click)="connectTo(connection, i)">
-                    <i *ngIf="connection.status != 'wait'" class="fa fa-plug"></i>
-                    <i *ngIf="connection.status == 'wait'" class="fa fa-circle-o-notch fa-spin"></i>
-                </a>
-            </li>
-        </ul>
+        <div *ngIf="connections.length > 0">
+
+            <ul class="connections-list">
+                <li *ngFor="let connection of connections; let i = index" class="{{connection.db.type}}" [ngClass]="{'status-wait': (connection.status=='wait')}">
+                    {{ connection.name }}
+                    <a class="btn btn-white" href="javascript:void(0)" (click)="connectTo(connection, i)">
+                        <i *ngIf="connection.status != 'wait'" class="fa fa-plug"></i>
+                        <i *ngIf="connection.status == 'wait'" class="fa fa-circle-o-notch fa-spin"></i>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+        <h5 *ngIf="connections.length == 0">
+            You haven't any recent connections.<br>
+            Try create new one in form at right panel.
+        </h5>
 
         <div class="copyright">
             2017 <i class="fa fa-copyright"></i>

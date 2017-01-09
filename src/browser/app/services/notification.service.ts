@@ -1,7 +1,7 @@
 import { NotifySend, NotificationCenter, WindowsToaster, WindowsBalloon, Growl } from "node-notifier";
-const os = require('os');
+const os = require("os");
 
-export class DCNotification{
+export class NotificationService{
 
     // @TODO need choose operating system
 

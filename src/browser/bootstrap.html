@@ -9,7 +9,28 @@
 <body>
 
 <!-- @TODO -->
-<app>Loading image here...</app>
+<app>
+    <style>
+        .loading-screen{
+            width: 100%;
+            height: 100%;
+            background: #4D89FB;
+            background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#4D89FB),color-stop(100%,#8F0CE8));
+        }
+        h1{
+            color: #fff;
+            position: absolute;
+            left: 55%;
+            top: 0;
+            margin: 250px 0 0 0;
+            font-weight: 300;
+            font-size: 64px;
+        }
+    </style>
+    <div class="loading-screen">
+        <h1>DataCat</h1>
+    </div>
+</app>
 
 </body>
 </html>
