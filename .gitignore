@@ -187,6 +187,10 @@ jspm_packages
 
 build/
 
+# Skip tests results
+
+tests-results/
+
 # Allow any .gitkeep or .gitempty file
 
 !.gitkeep

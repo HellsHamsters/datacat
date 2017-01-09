@@ -12,7 +12,7 @@ Contributions welcome! See the our [Contributor Guide]() on GitHub.
 
 ## Contacts us
 
-Feel free send tweet for us in [Slack]() :)
+Feel free send tweet for us in [Slack]().
 We'll really happy if you have feedback and appreciate any positive or negative reviews.
 
 ## Feature Requests
