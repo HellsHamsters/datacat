@@ -13,7 +13,7 @@ module.exports = {
         modules: [helpers.root('src/desktop'), helpers.root('node_modules')],
     },
 
-    cache: false,
+    cache: true,
 
     target: "electron",
     devtool: 'inline-eval-cheap-source-map',
@@ -41,7 +41,11 @@ module.exports = {
 
     plugins: [
 
-        new WebpackNotifierPlugin(),
+        new WebpackNotifierPlugin({
+            title: 'DataCat Desktop',
+            alwaysNotify: true,
+            skipFirstNotification: false
+        }),
 
     ],
 

@@ -18,7 +18,7 @@ module.exports = {
         ],
     },
 
-    cache: false,
+    cache: true,
 
     target: "electron-renderer",
     devtool: 'inline-eval-cheap-source-map',
@@ -74,6 +74,17 @@ module.exports = {
 
     plugins: [
 
+        new WebpackNotifierPlugin({
+            title: 'DataCat Browser',
+            alwaysNotify: true,
+            skipFirstNotification: false
+        }),
+
+        new webpack.DllReferencePlugin({
+            context: helpers.root('.'),
+            manifest: require(helpers.root('build/dll/vendor-manifest.json'))
+        }),
+
         new ExtractTextPlugin({
             filename: 'browser.css',
             disable: false,
@@ -96,17 +107,6 @@ module.exports = {
             __dirname
         ),
 
-        new WebpackNotifierPlugin(),
-
-    ],
-
-    externals: [
-        // 'jquery',
-        // 'electron',
-        // '@angular/core',
-        // '@angular/router',
-        // '@angular/platform-browser',
-        // '@angular/forms',
     ],
 
     watchOptions: {

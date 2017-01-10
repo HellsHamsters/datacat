@@ -7,11 +7,12 @@
     "test": "karma start karma.conf.js --single-run",
     "app": "cross-env NODE_ENV=development electron .",
     "build:dev": "concurrently \"npm run build:dev:desktop\" \"npm run build:dev:browser\" ",
-    "build:dev:run": "cross-env NODE_ENV=development webpack --profile --progress --colors --watch --watch-poll",
+    "build:dev:run": "cross-env NODE_ENV=development webpack --profile --progress --watch --colors",
     "build:dev:desktop": "cross-env BUILD_TARGET=DESKTOP npm run build:dev:run",
     "build:dev:browser": "cross-env BUILD_TARGET=BROWSER npm run build:dev:run",
+    "build:dev:dll": "webpack -p --progress --colors --config webpack.dll.config.js",
     "lint": "tslint ./src/**/*.ts -t verbose",
-    "clean": ""
+    "clean": "rimraf build/* && rimraf *.log && rimraf tests-results"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,7 @@
     "@angular/router": "^3.4.1",
     "@types/node": "^6.0.57",
     "@types/webpack": "^2.1.0",
+    "electron-context-menu": "^0.8.0",
     "jquery": "^3.1.1",
     "mysql": "^2.12.0",
     "node-notifier": "^4.6.1",
