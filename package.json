@@ -12,7 +12,8 @@
     "build:dev:browser": "cross-env BUILD_TARGET=BROWSER npm run build:dev:run",
     "build:dev:dll": "webpack -p --progress --colors --config webpack.dll.config.js",
     "lint": "tslint ./src/**/*.ts -t verbose",
-    "clean": "rimraf build/* && rimraf *.log && rimraf tests-results"
+    "clean": "rimraf build/* && rimraf *.log && rimraf tests-results",
+    "clean-pre-build": "npm run clean && npm run build:dev:dll"
   },
   "repository": {
     "type": "git",

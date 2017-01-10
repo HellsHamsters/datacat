@@ -1,2 +1,11 @@
+import 'fs';
+import 'jquery';
+import 'electron';
 import 'reflect-metadata';
 import 'zone.js';
+import 'node-notifier';
+import '@angular/core';
+import '@angular/router';
+import '@angular/platform-browser';
+import '@angular/platform-browser-dynamic';
+import '@angular/forms';

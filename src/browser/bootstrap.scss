@@ -21,6 +21,11 @@
   src: url('./assets/opensans/OpenSans-Bold.ttf') format('truetype');
 }
 
+* {
+  outline: none;
+  -webkit-user-select: none;
+}
+
 html {
   width: 100%;
   height: 100%;
@@ -28,20 +33,31 @@ html {
 }
 
 body {
+
   color: #333;
   width: 100%;
   height: 100%;
   background: #F6F6F6;
   padding: 0;
   margin: 0;
-  -webkit-app-region: drag;
   font-family: 'Open Sans', sans-serif;
+
+  -webkit-app-region: drag;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: subpixel-antialiased !important;
+
 }
 
 a, label, input, select, h1, h2 {
   color: #333;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
+}
+
+[draggable=true], [draggable] {
+  cursor: move;
+  -webkit-user-select: none;
+  cursor: move;
 }
 
 /** Buttons **/

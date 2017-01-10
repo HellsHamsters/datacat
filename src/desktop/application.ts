@@ -9,20 +9,44 @@ export class Application {
     public window: any;
 
     public options = {
+
         window: {
+
+            title: 'DataCat',
             width: 800,
             height: 600,
             frame: false,
-            titleBarStyle: 'hidden',
-            resizable: false,
             show: false,
+            titleBarStyle: 'hidden',
+
+            resizable: false,
             fullscreenable: false,
+            movable: true,
+            maximizable: false,
+            minimizable: false,
+
+            webPreferences: {
+
+                devTools: (process.env.NODE_ENV === 'development'),
+                textAreasAreResizable: false,
+                webgl: false,
+                defaultFontFamily: 'sans-serif',
+                defaultEncoding: 'UTF-8',
+
+                // Some says this options may try with High-DPI issues
+                // 'direct-write': true
+                // 'subpixel-font-scaling': true
+
+            }
+
         },
+
         url: url.format({
             pathname: path.join(__dirname, 'bootstrap.html'),
             protocol: 'file:',
             slashes: true
         })
+
     };
 
     constructor() {
@@ -34,6 +58,13 @@ export class Application {
     }
 
     public initializeWindow() {
+
+        require('electron-context-menu')({
+            showInspectElement: (process.env.NODE_ENV === 'development'),
+            prepend: (params, browserWindow) => [{
+                label: 'DataCat',
+            }]
+        });
 
         this.window = new BrowserWindow(this.options.window);
         this.window.loadURL(this.options.url);

@@ -1,6 +1,42 @@
-<a class="btn create-connection" style="display: block; margin: 100px 0;" href="#/">Connect</a>
+<div class="workspace">
 
-<div *ngFor="let database of databases">
-    {{ database.Database }}
+    <section class="digest">
+
+        <ul class="schema">
+            <li class="database" *ngFor="let db of dbs">
+
+                <span class="title">{{ db.title }}</span>
+
+                <ul class="tables" *ngIf="db.tables && db.tables.length > 0">
+                    <li class="table" *ngFor="let table of db.tables">
+                        <span class="title">{{ table.title }}</span>
+                    </li>
+                </ul>
+
+            </li>
+        </ul>
+
+    </section>
+
+    <section class="content">
+
+        <ul class="tabs">
+
+            <li *ngFor="let tab of tabs; let i = index" class="tab" [class.active]="tab.active === true" (click)="setActiveTab(i)" draggable="true">
+                <span class="label label-default">{{ tab.label }}</span> {{ tab.title }}
+                <span class="fa fa-times close" (click)="closeTab(i)"></span>
+            </li>
+
+            <li class="new-tab" (click)="openNewTab()"><i class="fa fa-plus"></i></li>
+
+        </ul>
+
+        <div class="data">
+
+
+
+        </div>
+
+    </section>
+
 </div>
-
