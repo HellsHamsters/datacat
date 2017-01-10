@@ -14,6 +14,22 @@ Just click on screenshots and feel awesome! :heart_eyes_cat:
 
 ![preview-startpage](https://cloud.githubusercontent.com/assets/610172/21784372/427b384c-d6cc-11e6-9abd-56390e5d7b3e.png)
 
+## Roadmap
+#### v. 0.1.0
+
+##### UI
+
+- [x] UI / Creating connections to database (with partial MySQL support)
+- [x] UI / List of recent and saved connections
+- [ ] UI / Printing data from databases
+- [ ] UI / Manipulating data in databases
+
+##### Foundation
+
+- [ ] Creating connections to PostgreSQL, Redis, MongoDB, ElasticSearch
+- [ ] Support "over-ssh" connections to databases
+- [ ] Adapters to PostgreSQL, Redis, MongoDB, ElasticSearch for printing manipulating data
+
 ## Downloads / Install
 
 Actually, in most cases you need using the free installer for [OS X](), [Linux]() or [Window]().
