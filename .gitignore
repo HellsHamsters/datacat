@@ -195,6 +195,10 @@ tests-results/
 
 @TODO.md
 
+# Skip any .jsonschema, which using for fast mocking and prototyping data objects
+
+*.jsonschema
+
 # Allow any .gitkeep or .gitempty file
 
 !.gitkeep
