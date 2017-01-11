@@ -49,10 +49,8 @@ export class Bus {
             let connection = new Connection(connectionId);
 
             connection.connect().then((data) => {
-                console.log('connected', data);
                 event.sender.send('connection-connected', JSON.stringify(data));
             }, (err) => {
-                console.log('connected', err);
                 event.sender.send('connection-connected', JSON.stringify(err));
             });
 

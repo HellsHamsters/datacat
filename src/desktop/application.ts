@@ -6,7 +6,7 @@ const url   = require('url');
 export class Application {
 
     public application: any = app;
-    public window: any;
+    public window: BrowserWindow;
 
     public options = {
 

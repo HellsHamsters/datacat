@@ -1,9 +1,6 @@
-const fs    = require('fs');
-const path  = require('path');
+import { config } from '../core/config';
 
 export class Connections {
-
-    private file: string = path.join(__dirname, 'connections.json');
 
     public loadRecentConnections() {
 
@@ -17,14 +14,9 @@ export class Connections {
 
     }
 
-    public saveConnections(data) {
-        fs.writeFileSync(this.file, JSON.stringify(data));
-    }
-
     public loadConnections() {
 
-        fs.openSync(this.file, 'r+');
-        let connections = JSON.parse(fs.readFileSync(this.file).toString());
+        let connections = config.load(config.CONNRECENT);
 
         if (Array.isArray(connections)) {
             connections.reverse();
@@ -38,7 +30,7 @@ export class Connections {
 
         let connections = this.loadConnections();
 
-        if(connections.length > 0) {
+        if (connections.length > 0) {
 
             connections.reverse();
 
@@ -50,7 +42,7 @@ export class Connections {
                 }
             }
 
-            this.saveConnections(connections);
+            config.save(config.CONNRECENT, connections);
 
         }
 

@@ -4,6 +4,7 @@ import { MysqlAdapter } from './adapters/mysql';
 import { PgsqlAdapter } from './adapters/pgsql';
 import { RedisAdapter } from './adapters/redis';
 import { ElasticsearchAdapter } from './adapters/elasticsearch';
+import { config } from '../core/config';
 
 export class Connection {
 
@@ -206,7 +207,7 @@ export class Connection {
 
                     });
 
-                    connections.saveConnections(list);
+                    config.save(config.CONNRECENT, list);
 
                     return resolve(this.getCredentials());
 
