@@ -34,8 +34,8 @@ export class Bus {
 
             connection.create().then((data) => {
                 event.sender.send('connection-created', JSON.stringify(data));
-            }, (data) => {
-                event.sender.send('connection-created', JSON.stringify(data));
+            }, (err) => {
+                event.sender.send('connection-created', JSON.stringify(err));
             });
 
         });

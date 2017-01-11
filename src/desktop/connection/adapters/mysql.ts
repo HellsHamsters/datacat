@@ -20,7 +20,7 @@ export class MysqlAdapter extends Adapter {
 
                 this._descriptor.connect((err) => {
 
-                    if(err){
+                    if (err) {
                         return reject(err);
                     } else {
                         return resolve(this._descriptor);
@@ -40,7 +40,7 @@ export class MysqlAdapter extends Adapter {
 
             this._descriptor.query('SHOW DATABASES', (err, results) => {
 
-                if(err){
+                if (err) {
                     return reject(err);
                 } else {
                     return resolve(results);
