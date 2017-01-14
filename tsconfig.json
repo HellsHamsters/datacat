@@ -17,12 +17,13 @@
     ],
     "types": [
       "node",
-      "webpack"
+      "webpack",
+      "jasmine"
     ]
   },
   "exclude": [
     "node_modules",
-    "dist"
+    "build"
   ],
   "awesomeTypescriptLoaderOptions": {
     "forkChecker": true,

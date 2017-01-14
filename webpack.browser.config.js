@@ -37,7 +37,7 @@ module.exports = {
                 use: [
                     'ts-loader',
                 ],
-                exclude: [/\.(spec|e2e)\.ts$/]
+                // @TODO exclude: [/\.(spec|e2e)\.ts$/]
             },
 
             {
@@ -76,7 +76,7 @@ module.exports = {
 
         new WebpackNotifierPlugin({
             title: 'DataCat Browser',
-            alwaysNotify: true,
+            alwaysNotify: false,
             skipFirstNotification: false
         }),
 
