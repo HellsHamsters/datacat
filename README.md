@@ -1,4 +1,4 @@
-## DataCat — powerful tool for DB management with well-designed UI / UX. *<sub><sup>seems like - first in the world</sup></sub>* :scream: :wink:
+## DataCat — powerful tool for DB management with well-designed UI / UX<br>*<sub><sup>seems like - first in the world</sup></sub>* :scream: :wink:
 
 [![Build Status](https://travis-ci.org/HellsHamsters/datacat.svg?branch=master)](https://travis-ci.org/HellsHamsters/datacat)
 [![Code Climate](https://codeclimate.com/github/HellsHamsters/datacat/badges/gpa.svg)](https://codeclimate.com/github/HellsHamsters/datacat)
