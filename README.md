@@ -1,5 +1,4 @@
-
-## What is DataCat?
+## DataCat — powerful tool for DB management with well-designed UI / UX. *<sub><sup>seems like - first in the world</sup></sub>* :scream: :wink:
 
 [![Build Status](https://travis-ci.org/HellsHamsters/datacat.svg?branch=master)](https://travis-ci.org/HellsHamsters/datacat)
 [![Code Climate](https://codeclimate.com/github/HellsHamsters/datacat/badges/gpa.svg)](https://codeclimate.com/github/HellsHamsters/datacat)
@@ -8,10 +7,12 @@
 [![DevDependencies](https://david-dm.org/hellshamsters/datacat/dev-status.svg)](https://david-dm.org/hellshamsters/datacat?type=dev)
 [![license](https://img.shields.io/github/license/HellsHamsters/datacat.svg)](https://github.com/HellsHamsters/datacat/blob/master/LICENSE)
 
-DataCat is a database manager for OS X, Linux and Windows which supports 
+## What is DataCat?
+
+DataCat it is a database manager for OS X, Linux and Windows supporting
 MySQL, PostgreSQL, Redis, MongoDB and ElasticSearch.
 
-Just click on screenshots and feel awesome! :heart_eyes_cat:
+Just click on screenshots and feel his awesomeness! :heart_eyes_cat:
 
 ![preview-startpage](https://cloud.githubusercontent.com/assets/610172/21784372/427b384c-d6cc-11e6-9abd-56390e5d7b3e.png)
 
@@ -30,6 +31,19 @@ Just click on screenshots and feel awesome! :heart_eyes_cat:
 - [ ] Creating connections to PostgreSQL, Redis, MongoDB, ElasticSearch
 - [ ] Support "over-ssh" connections to databases
 - [ ] Adapters to PostgreSQL, Redis, MongoDB, ElasticSearch for printing manipulating data
+
+#### v. 0.2.0
+
+##### Adapters
+
+- [ ] SQLite
+- [ ] Memcached
+- [ ] LevelDB
+- [ ] SSDB
+- [ ] RocksDB
+- [ ] Riak KV
+- [ ] Riak TS
+- [ ] Riak S2
 
 ## Downloads / Install
 
